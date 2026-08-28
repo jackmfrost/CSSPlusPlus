@@ -1,0 +1,43 @@
+.counter {
+    state count: 1;
+
+    on click {
+        count = count + 1;
+    }
+
+    when count >= 20 {
+        background: green;
+    }
+}
+
+// AST Example
+
+/*
+Program
+|
+|__ Rule (Needs to remember: It's identifier, what kind of selector it is (class, id, etc.), and what's in its body)
+    |
+    |__ Identifier: counter
+    |__ SelectorType: class
+    |__ Body
+        |
+        |__ StateDeclaration
+        |    |
+        |    |__ Identifier: count
+        |    |__ Value : NumberLiteral
+        |        |
+        |        |__ Value: 42
+        |__ EventHandler
+            |
+            |__ 
+            |__ StateDeclaration
+                |
+                |__ Identifier: count
+                |__ Value: BinaryExpression
+                    |
+                    |__ Left: count
+                    |__ Operator: +
+
+        |__ IfStatement
+    
+*/
